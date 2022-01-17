@@ -87,7 +87,7 @@ const Destinations = () => {
             </ListItem>
           ))}
         </List>
-        {destinations.length === 0 && (
+        {destinations.length === 0 && !isAdding && (
           <Typography variant="body2" textAlign="center" sx={{ mt: 1 }}>
             No favorite destination yet 😢
           </Typography>
