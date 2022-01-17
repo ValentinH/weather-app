@@ -6,14 +6,14 @@ import type {
   NextPage,
 } from 'next'
 import Container from '@mui/material/Container'
-import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
+import { NoSsr, Skeleton } from '@mui/material'
 import axios from 'axios'
 import serverConfig from '#src/server/server-config'
 import { WeatherResponse } from '#src/server/dto/open-weather'
-import CurrentWeather from '#src/components/CurrentWeather'
-import Destinations from '#src/components/Destinations'
-import { NoSsr, Skeleton } from '@mui/material'
+import CurrentWeather from '#src/app/components/CurrentWeather'
+import Destinations from '#src/app/components/Destinations'
+import TopDestinations from '#src/app/components/TopDestinations'
 
 export const getServerSideProps = async ({ query }: GetServerSidePropsContext) => {
   const { data } = await axios.get<WeatherResponse>(serverConfig.openWeatherApiUrl, {
@@ -36,7 +36,7 @@ type Props = InferGetServerSidePropsType<typeof getServerSideProps>
 
 const Home: NextPage<Props> = (props) => {
   return (
-    <Container maxWidth="lg">
+    <Container maxWidth="sm">
       <Box
         sx={{
           my: 4,
@@ -46,6 +46,7 @@ const Home: NextPage<Props> = (props) => {
           alignItems: 'center',
         }}
       >
+        <TopDestinations />
         <CurrentWeather
           city={props.city}
           description={props.description}

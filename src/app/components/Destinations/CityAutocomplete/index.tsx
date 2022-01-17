@@ -72,7 +72,7 @@ const CityAutocomplete = ({ onSelect }: Props) => {
         setInputValue(newInputValue)
       }}
       noOptionsText="Input a city name"
-      classes={{}}
+      autoHighlight
       renderInput={(params) => (
         <TextField
           color="primary"
