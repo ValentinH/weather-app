@@ -17,7 +17,6 @@ type Props = {
 }
 
 const CityAutocomplete = ({ onSelect }: Props) => {
-  const [value, setValue] = React.useState<Value | null>(null)
   const [inputValue, setInputValue] = React.useState('')
   const [options, setOptions] = React.useState<CityAutocompleteResponse['results']>([])
 
@@ -49,7 +48,7 @@ const CityAutocomplete = ({ onSelect }: Props) => {
     return () => {
       active = false
     }
-  }, [value, inputValue, fetchResults])
+  }, [inputValue, fetchResults])
 
   return (
     <Autocomplete
@@ -60,10 +59,11 @@ const CityAutocomplete = ({ onSelect }: Props) => {
       autoComplete
       includeInputInList
       filterSelectedOptions
-      value={value}
+      value={null}
+      blurOnSelect
+      clearOnBlur
       onChange={(event, newValue) => {
         setOptions(newValue ? [newValue, ...options] : options)
-        setValue(newValue)
         if (newValue) {
           onSelect(newValue.description)
         }
