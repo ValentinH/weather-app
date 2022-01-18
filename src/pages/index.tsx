@@ -46,7 +46,9 @@ const Home: NextPage<Props> = (props) => {
           alignItems: 'center',
         }}
       >
-        <TopDestinations />
+        <NoSsr>
+          <TopDestinations />
+        </NoSsr>
         <CurrentWeather
           city={props.city}
           description={props.description}

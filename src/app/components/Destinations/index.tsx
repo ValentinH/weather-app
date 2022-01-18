@@ -64,7 +64,7 @@ const Destinations = () => {
         <List>
           {destinations.map((destination) => (
             <ListItem
-              key="destination"
+              key={destination.name}
               secondaryAction={
                 <IconButton
                   edge="end"
